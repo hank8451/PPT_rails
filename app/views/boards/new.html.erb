@@ -1,0 +1,14 @@
+<h1>新增看板</h1>
+<form action="/boards" method="post">
+
+  <input type="text" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="title">看板名稱</label>
+  <input type="text" id="title"  name="title">
+  
+  <label for="intro"></label>
+  <textarea name="intro" id="intro"></textarea>
+  
+  <input type="submit" name="送出">
+
+</form>

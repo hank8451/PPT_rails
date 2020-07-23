@@ -1,0 +1,10 @@
+<h1>看板</h1>
+<!-- <a href="/boards/new">新增看板1</a>
+<a href="<%= new_board_path %>">新增看板2</a > -->
+
+<%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
+<ul>
+  <% @boards.each do |board| %>
+    <li><%= board.title %></li>
+  <% end %>
+</ul>
