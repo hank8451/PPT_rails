@@ -1,0 +1,16 @@
+<% if board.errors.any? %>
+  <ul>
+  <% board.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for(board) do |f| %>
+  <%= f.label :title, "看板名稱" %>
+  <%= f.text_field :title %>
+  <%= f.label :intro, "看板介紹" %>
+  <%= f.text_area :intro %>
+  <%= f.submit "送出" %>
+<% end %>

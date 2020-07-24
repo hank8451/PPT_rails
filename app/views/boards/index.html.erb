@@ -1,11 +1,4 @@
 <h1>看板</h1>
-<!-- <p><%= flash[:notice] %></p> -->
-<!-- <p><%= notice %></p> -->
-
-
-
-<!-- <a href="/boards/new">新增看板1</a>
-<a href="<%= new_board_path %>">新增看板2</a > -->
 
 <%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
 <ul>
@@ -13,6 +6,7 @@
     <li>
       <%= link_to board.title, board_path(board) %>
       <%= link_to "edit", edit_board_path(board) %>
+      <%= link_to "delete", board_path(board), method: 'delete', data: { confirm: '確認刪除?' }%>
     </li>
   
   <% end %>
