@@ -11,3 +11,5 @@ class CreateBoards < ActiveRecord::Migration[6.0]
     add_index :boards, :deleted_at
   end
 end
+
+

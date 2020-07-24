@@ -4,11 +4,25 @@ class BoardsController < ApplicationController
   end
 
   def new
+    @board = Board.new
   end
 
   def create
-    # render html: params["title"]
-    Board.create(title: params[:title], intro: params[:intro])
-    render html: "OK"
+    
+    @board = Board.new(board_params)
+   
+    if @board.save
+      # flash[:notice] = "新增成功"
+      # redirect_to boards_path 
+      redirect_to boards_path, notice: "新增成功"
+    else
+
+    end
+
+  end
+
+  private
+  def board_params
+    params.require(:board).permit(:title, :intro)
   end
 end
