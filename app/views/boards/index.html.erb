@@ -10,6 +10,10 @@
 <%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
 <ul>
   <% @boards.each do |board| %>
-    <li><%= board.title %></li>
+    <li>
+      <%= link_to board.title, board_path(board) %>
+      <%= link_to "edit", edit_board_path(board) %>
+    </li>
+  
   <% end %>
 </ul>
