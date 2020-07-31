@@ -4,10 +4,11 @@ class BoardsController < ApplicationController
   # before_action :find_board, except: [:index, :new, :create, ...]
 
   def index
-    @boards = Board.where(deleted_at: nil)
+    @boards = Board.all
   end
 
   def show
+    @post = @board.posts
   end
 
   def new

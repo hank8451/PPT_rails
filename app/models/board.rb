@@ -1,7 +1,13 @@
 class Board < ApplicationRecord
+
+  acts_as_paranoid
+  has_many :posts
   validates :title, presence: true, length: {minimum: 2}
   
-  def destroy
-    update(deleted_at: Time.now)
-  end
+  # default_scope { where(deleted_at: nil) }
+  # scope :available, -> { where(deleted_at: nil) }
+  
+  # def destroy
+  #   update(deleted_at: Time.now)
+  # end
 end
