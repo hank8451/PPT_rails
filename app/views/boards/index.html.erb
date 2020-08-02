@@ -1,25 +1,31 @@
-<header class="d-flex">
-  <div class="col">
+<header class="header-section">
+  <div class="title1">
     【主功能表】
   </div>
-  <div class="col">
+  <div class="title2">
     批批踢實業坊
   </div>
-  <div class="col">
-    看板
+  <div class="title3">
+    看板《???》
   </div>
 </header>
-
+<div class="container">
+  <div class="layer1">
+    <div class="layer2">
+      <h2>GOOD LUCK</h2>
+    </div>
+  </div>
+  <%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
+  <ul>
+    <% @boards.each do |board| %>
+      <li>
+        <%= link_to board.title, board_path(board) %>
+        <%= link_to "edit", edit_board_path(board) %>
+        <%= link_to "delete", board_path(board), method: "delete", data: { confirm: "確認刪除?" } %>
+      </li>
+    
+    <% end %>
+  </ul>
+</div>
 <h1>看板</h1>
 
-<%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
-<ul>
-  <% @boards.each do |board| %>
-    <li>
-      <%= link_to board.title, board_path(board) %>
-      <%= link_to "edit", edit_board_path(board) %>
-      <%= link_to "delete", board_path(board), method: "delete", data: { confirm: "確認刪除?" } %>
-    </li>
-  
-  <% end %>
-</ul>
