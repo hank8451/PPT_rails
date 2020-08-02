@@ -10,7 +10,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-add_index :posts, :deleted_at
-add_index :posts, :serial, unique: true
+    add_index :posts, :deleted_at
+    add_index :posts, :serial, unique: true
   end
 end

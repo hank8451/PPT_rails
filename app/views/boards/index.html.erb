@@ -1,3 +1,15 @@
+<header class="d-flex">
+  <div class="col">
+    【主功能表】
+  </div>
+  <div class="col">
+    批批踢實業坊
+  </div>
+  <div class="col">
+    看板
+  </div>
+</header>
+
 <h1>看板</h1>
 
 <%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
@@ -6,7 +18,7 @@
     <li>
       <%= link_to board.title, board_path(board) %>
       <%= link_to "edit", edit_board_path(board) %>
-      <%= link_to "delete", board_path(board), method: 'delete', data: { confirm: '確認刪除?' }%>
+      <%= link_to "delete", board_path(board), method: "delete", data: { confirm: "確認刪除?" } %>
     </li>
   
   <% end %>
