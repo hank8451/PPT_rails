@@ -8,16 +8,12 @@ class UsersController < ApplicationController
   end
 
   def login
-    if user_params[:account] && user_params[:password]
-      user = User.login(user_params)
-      if user
-        sign_in_user(user)
-        redirect_to root_path, notice: "成功登入"
-      else
-        redirect_to sign_in_users_path, notice: "帳號或密碼錯誤"
-      end
+    user = User.login(user_params)
+    if user
+      sign_in_user(user)
+      redirect_to root_path, notice: "成功登入"
     else
-      redirect_to sign_in_users_path, notice: "請輸入帳號密碼"
+      redirect_to sign_in_users_path, notice: "請輸入正確帳號密碼"
     end
   end
 
