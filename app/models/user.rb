@@ -9,8 +9,6 @@ class User < ApplicationRecord
     if options[:account] && options[:password]
       options[:password] = "x" + options[:password] + "y"
       find_by(account: options[:account], password: Digest::SHA1.hexdigest(options[:password]))
-    else
-      return false
     end
   end
 
