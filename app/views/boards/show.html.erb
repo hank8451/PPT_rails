@@ -5,6 +5,7 @@
   <% @post.each do |post| %>
   <li>  
     <%= post.title %>
+    <%= link_to "編輯文章", edit_post_path(post) %>
   </li>
   <% end %>
 </ul>
