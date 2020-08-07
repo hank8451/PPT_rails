@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:show, :edit, :update, :destroy]
+  before_action :find_board, only: [:show, :edit, :update, :destroy, :favorite]
   # before_action :find_board, except: [:index, :new, :create, ...]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -8,7 +8,12 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @post = @board.posts
+    @post = @board.posts.includes(:user)
+  end
+
+  def favorite
+    current_user.toggle_favorite_board(@board)
+    redirect_to favorites_path, notice: "OK!"
   end
 
   def new

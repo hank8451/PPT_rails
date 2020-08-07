@@ -6,6 +6,10 @@ class Post < ApplicationRecord
 
   before_create :create_serial
 
+  def display_username
+    user.nil? ? "-" : user.account
+  end
+
   private
 
   def create_serial

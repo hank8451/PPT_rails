@@ -1,9 +1,13 @@
-<h1>看板 <%= @board.title %></h1>
+<h1>
+  看板 <%= @board.title %>
+  <%= link_to "我的最愛", favorite_board_path(id: @board.id), method: "Post" %>
+</h1>
 
 <%= link_to "新增文章", new_board_post_path(@board) %>
 <ul>
   <% @post.each do |post| %>
   <li>  
+    <%= post.display_username %>
     <%= post.title %>
     <%= link_to "編輯文章", edit_post_path(post) %>
   </li>
