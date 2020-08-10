@@ -18,4 +18,8 @@ class Board < ApplicationRecord
   # def destroy
   #   update(deleted_at: Time.now)
   # end
+
+  def favorited_by?(u)
+    favorited_users.include?(u)
+  end
 end

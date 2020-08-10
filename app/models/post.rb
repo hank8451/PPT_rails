@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :serial, uniqueness: true
 
   before_create :create_serial
+  has_many :comments
 
   def display_username
     user.nil? ? "-" : user.account

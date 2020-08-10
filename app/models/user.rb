@@ -14,6 +14,8 @@ class User < ApplicationRecord
   # has_many :favorited_boards, class_name: "Board", through: :favorite_boards
   has_many :favorited_boards, through: :favorite_boards, source: :board
 
+  has_many :comments
+
   def self.login(options)
     if options[:account] && options[:password]
       options[:password] = "x" + options[:password] + "y"

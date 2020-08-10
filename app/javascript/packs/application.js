@@ -16,3 +16,10 @@ require("channels")
 //
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
+
+require("../scripts");
+require("../stylesheets");
+import "bootstrap/dist/css/bootstrap"
+import "@fortawesome/fontawesome-free/css/all";
+
+import "controllers"

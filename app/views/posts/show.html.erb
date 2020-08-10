@@ -20,3 +20,18 @@
 </ul>
 
 <p><%= @post.content %></p>
+
+<%= form_with(model: @comment, url: post_comments_path(@post), loacl: true) do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit "送出" %>
+<% end %>
+
+<hr>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= comment.content %>
+    </li>
+  <% end %>
+</ul>
