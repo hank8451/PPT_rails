@@ -12,6 +12,7 @@ class BoardsController < ApplicationController
   end
 
   def favorite
+    @board = Board.find(params[:id])
     current_user.toggle_favorite_board(@board)
 
     respond_to do |format|
