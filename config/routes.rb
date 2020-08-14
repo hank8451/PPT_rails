@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   #   resources :posts, only: [:index, :new, :create]
   # end
   # resources :posts, except: [:index, :new, :create]
+
+  namespace :api do
+    namespace :v2 do
+      resources :boards, only: [:index]
+    end
+  end
   resources :favorites, only: [:index]
   resources :boards do
     member do
