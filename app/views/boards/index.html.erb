@@ -9,9 +9,11 @@
     看板《???》
   </div>
 </header>
+
+
 <div class="container">
  
-  <%= link_to "新增看板", new_board_path, class: "abc", id: "xyz" %>
+  <%= link_to "新增看板", new_board_path if policy(:board).create? %>
   <ul>
     <% @boards.each do |board| %>
       <li>

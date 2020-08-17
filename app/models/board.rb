@@ -3,7 +3,7 @@ class Board < ApplicationRecord
   include AASM
 
   # default_scope { normal }
-  paginates_per 1
+  paginates_per 2
   has_many :posts
 
   has_many :board_masters

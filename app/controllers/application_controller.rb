@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorize
   before_action :find_user
   helper_method :user_signed_in?, :current_user
 
@@ -32,5 +32,11 @@ class ApplicationController < ActionController::Base
   # 沒有登入自動轉址到登入頁面
   def authenticate_user!
     redirect_to root_path, notice: "請登入會員" if not user_signed_in?
+  end
+
+  private
+
+  def not_authorize
+    redirect_to root_path, notice: "權限不足或請付款"
   end
 end
