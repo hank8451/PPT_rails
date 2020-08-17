@@ -1,6 +1,9 @@
 class Board < ApplicationRecord
   acts_as_paranoid
+  include AASM
 
+  # default_scope { normal }
+  paginates_per 1
   has_many :posts
 
   has_many :board_masters
@@ -22,4 +25,30 @@ class Board < ApplicationRecord
   def favorited_by?(u)
     favorited_users.include?(u)
   end
+
+  aasm(column: "state") do
+    state :normal, initial: true
+    state :hidden, :locked
+
+    event :hide do
+      transitions from: [:normal, :locked], to: :hidden
+    end
+
+    event :show do
+      transitions from: :hidden, to: :locked
+    end
+
+    event :lock do
+      transitions from: [:normal, :hidden], to: :locked
+
+      # after_transaction do
+      #   puts "已鎖版"
+      # end
+    end
+
+    event :unlock do
+      transitions from: :locked, to: :normal
+    end
+  end
+  aasm
 end

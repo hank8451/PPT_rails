@@ -1,10 +1,9 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:show, :edit, :update, :destroy, :favorite]
-  # before_action :find_board, except: [:index, :new, :create, ...]
+  before_action :find_board, only: [:show, :edit, :update, :destroy, :favorite, :hide]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @boards = Board.all
+    @boards = Board.normal.page(params[:page])
   end
 
   def show
@@ -53,10 +52,15 @@ class BoardsController < ApplicationController
     redirect_to boards_path, notice: "刪除成功"
   end
 
+  def hide
+    @board.hide! if @board.may_hide?
+    redirect_to boards_path, notice: "看板已隱藏"
+  end
+
   private
 
   def find_board
-    @board = Board.find(params[:id])
+    @board = Board.normal.find(params[:id])
   end
 
   def board_params

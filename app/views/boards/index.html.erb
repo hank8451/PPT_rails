@@ -18,10 +18,12 @@
         <%= link_to board.title, board_path(board) %>
         <%= link_to "edit", edit_board_path(board) %>
         <%= link_to "delete", board_path(board), method: "delete", data: { confirm: "確認刪除?" } %>
+        <%= link_to "hide", hide_board_path(board), method: "put" %>
       </li>
     
     <% end %>
   </ul>
+  <%= paginate @boards %>
 </div>
 <div id="board">
   <Board></Board>
